@@ -1,4 +1,9 @@
+import java.text.NumberFormat;
+
 public class ContaMovimentacao {
+
+    private static NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
     private ContaOperacao operacao;
     private Double valor;
     private Conta origem;
@@ -31,7 +36,8 @@ public class ContaMovimentacao {
 
     @Override
     public String toString() {
-        return "ContaMovimentacao [operacao=" + operacao + ", valor=" + valor + ", origem=" + origem + ", destino="
+        return "ContaMovimentacao [operacao=" + operacao + ", valor=" + formatter.format(valor) + ", origem=" + origem
+                + ", destino="
                 + destino + "]";
     }
 }

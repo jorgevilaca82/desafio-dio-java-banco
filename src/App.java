@@ -1,6 +1,9 @@
+import java.text.NumberFormat;
 import java.util.List;
 
 public class App {
+
+    static NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     static void mostraConta(Conta conta) {
         // Cast
@@ -19,24 +22,24 @@ public class App {
     }
 
     static void mostraSaldo(Conta conta) {
-        System.out.println(conta + ": O saldo atual da conta é -> " + conta.getSaldo());
+        System.out.println(conta + ": O saldo atual da conta é -> " + formatter.format(conta.getSaldo()));
     }
 
     static void depositar(Conta conta, Double valor) throws Exception {
         conta.depositar(valor);
-        System.out.println(conta + ": Foi realizado um depósito na conta no valor de " + valor);
+        System.out.println(conta + ": Foi realizado um depósito na conta no valor de " + formatter.format(valor));
         mostraSaldo(conta);
     }
 
     static void sacar(Conta conta, Double valor) {
         conta.sacar(valor);
-        System.out.println(conta + ": Foi realizado um saque na conta no valor de " + valor);
+        System.out.println(conta + ": Foi realizado um saque na conta no valor de " + formatter.format(valor));
         mostraSaldo(conta);
     }
 
     static void transferir(Conta origem, Conta destino, Double valor) {
         origem.transferir(valor, destino);
-        System.out.println("Foi realizado uma transferência: " + origem + " para " + destino + " no valor de " + valor);
+        System.out.println("Foi realizado uma transferência: " + origem + " para " + destino + " no valor de " + formatter.format(valor));
         mostraSaldo(origem);
         mostraSaldo(destino);
 
